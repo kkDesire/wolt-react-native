@@ -1,10 +1,17 @@
-import Ionicons from '@expo/vector-icons/Ionicons'
-import React from 'react'
-import { StyleSheet, Text, TouchableOpacity } from 'react-native'
+import Ionicons from '@expo/vector-icons/Ionicons';
+import React from 'react';
+import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 
-const AppleAuthButton = () => {
+type AppleAuthButtonProps = { onPress?: () => void; disabled?: boolean }
+const AppleAuthButton = ({ onPress, disabled }: AppleAuthButtonProps) => {
   return (
-    <TouchableOpacity style={styles.appleButton}>
+    <TouchableOpacity
+      style={styles.appleButton}
+      onPress={onPress}
+      disabled={disabled}
+      accessibilityRole="button"
+      accessibilityLabel="Sign in with Apple"
+    >
         <Ionicons name="logo-apple" size={18} color="white" />
       <Text style={styles.appleButtonText}>Sign in with Apple</Text>
     </TouchableOpacity>

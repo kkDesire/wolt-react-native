@@ -8,7 +8,10 @@ import Animated, { FadeInDown } from "react-native-reanimated";
 
 export default function Index() {
   const openWebBrowser = () => {
-    Linking.openURL('https://kdesire.vercel.app')
+    const url = 'https://kdesire.vercel.app'
+    Linking.canOpenURL(url).then((ok) => {
+      if (ok) Linking.openURL(url)
+    })
   }
   return (
     <View
@@ -60,9 +63,9 @@ export default function Index() {
         </View>
         <Animated.View style={styles.privacyContainer} entering={FadeInDown.delay(400)}>
           <Text style={styles.privacyText}>
-            Please visite {' '}
+            Please visit {' '}
             <Text style={styles.privacyLink} onPress={openWebBrowser}>Wolt Privacy Statement</Text>{' '}
-            To learn about personal data procssing at Wolt.
+            to learn about personal data processing at Wolt.
           </Text>
         </Animated.View>
       </View>
